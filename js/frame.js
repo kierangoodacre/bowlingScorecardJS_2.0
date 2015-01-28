@@ -6,5 +6,14 @@ var Frame = function (){
 Frame.prototype.rackScore = function (pinsKnockedDown){
 	this.score += pinsKnockedDown;
 	this.throwCount -= 1;
+
+	if (this.throwCount === 0){
+		this.resetThrowCount()
+	}
+
+};
+
+Frame.prototype.resetThrowCount = function (){
+	this.throwCount = 2;
 };
 

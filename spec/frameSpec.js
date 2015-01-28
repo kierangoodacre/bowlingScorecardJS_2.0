@@ -29,6 +29,12 @@ describe ("Frame", function(){
 			expect(frame.throwCount).toEqual(1);
 		});
 
+		it("Resets after two throws", function(){
+			frame.rackScore(8);
+			frame.rackScore(2);
+			expect(frame.throwCount).toEqual(2);
+		});
+
 	}); 
 
 });

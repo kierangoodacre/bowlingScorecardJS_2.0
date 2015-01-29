@@ -46,7 +46,27 @@ describe ("Frame", function(){
 
 	describe("Strike", function(){
 
-		it("it should be initialized as not a strike", function(){
+		it("It should not be initialized as a strike", function(){
+			expect(frame.strike).toBe(false);
+		});
+
+		it("Should be initialized if 10 pins knocked down in one throw", function(){
+			frame.rackScore(10);
+			expect(frame.strike).toBe(true);
+		});
+
+	});
+
+	describe("Spare", function(){
+
+		it("It should not be intialized as a spare", function(){
+			expect(frame.spare).toBe(false);
+		});
+
+		it("Should be intialized if 10 pins are knocked down in 2 throws", function(){
+			frame.rackScore(6);
+			frame.rackScore(4);
+			expect(frame.spare).toBe(true);
 			expect(frame.strike).toBe(false);
 		});
 

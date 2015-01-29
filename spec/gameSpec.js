@@ -8,20 +8,31 @@ describe ("Game", function(){
 		frame = new Frame();
 	});
 
-	it("has no points when game is started", function(){
-		expect(game.points).toEqual([]);
-	});
+		describe("Frame score", function(){
 
-	it("should be made up of ten frames", function(){
-		expect(game.frames).toEqual(10);
-	});
+			it("Has no pointsTally when game is started", function(){
+				expect(game.pointsTally).toEqual([]);
+			});
 
+			it("Should be made up of ten frames", function(){
+				expect(game.frames).toEqual(10);
+			});
 
-	it("points should be added over the number of frames", function(){
-		frame.rackScore(4);
-		frame.rackScore(4);
-		game.receiveScore(frame);
-		expect(game.points).toEqual([8]);
-	});
+			it("Should only be added when there are no throws left", function(){
+				frame.rackScore(2);
+				expect(game.pointsTally).toEqual([]);
+				frame.rackScore(2);
+				game.receiveScore(frame);
+				expect(game.pointsTally).toEqual([4]);
+			});
+
+			it("Points should be added over the number of frames", function(){
+				frame.rackScore(4);
+				frame.rackScore(4);
+				game.receiveScore(frame);
+				expect(game.pointsTally).toEqual([8]);
+			});
+
+		});
 
 });

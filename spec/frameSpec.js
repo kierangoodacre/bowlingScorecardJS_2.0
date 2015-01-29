@@ -13,7 +13,7 @@ describe ("Frame", function(){
 			expect(frame.score).toEqual(10);
 		});
 
-		it("Keeps a running score over the frames", function(){
+		it("Keeps a running score over the frame", function(){
 			frame.rackScore(8);
 			frame.rackScore(2);
 			expect(frame.score).toEqual(10);
@@ -29,12 +29,27 @@ describe ("Frame", function(){
 			expect(frame.throwCount).toEqual(1);
 		});
 
-		it("Resets after two throws", function(){
-			frame.rackScore(8);
-			frame.rackScore(2);
-			expect(frame.throwCount).toEqual(2);
+		// it("Resets after two throws", function(){
+		// 	frame.rackScore(8);
+		// 	frame.rackScore(2);
+		// 	expect(frame.throwCount).toEqual(2);
+		// 	expect(frame.score).toEqual(0);
+		// });
+
+		it("If 10 pins are knocked down on first throw, end of frame", function(){
+			frame.rackScore(10);
+			expect(frame.throwCount).toEqual(0);
+			expect(frame.score).toEqual(10);
 		});
 
 	}); 
+
+	describe("Strike", function(){
+
+		it("it should be initialized as not a strike", function(){
+			expect(frame.strike).toBe(false);
+		});
+
+	});
 
 });

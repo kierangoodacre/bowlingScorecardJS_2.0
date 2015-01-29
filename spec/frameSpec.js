@@ -13,7 +13,7 @@ describe ("Frame", function(){
 			expect(frame.score).toEqual(10);
 		});
 
-		it("Keeps a running score over the frame", function(){
+		it("Keeps a running score over the frames", function(){
 			frame.rackScore(8);
 			frame.rackScore(2);
 			expect(frame.score).toEqual(10);

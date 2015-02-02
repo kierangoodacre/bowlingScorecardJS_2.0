@@ -1,4 +1,4 @@
-describe ("Frame", function(){
+    describe ("Frame", function(){
 
 	var frame;
 
@@ -10,13 +10,13 @@ describe ("Frame", function(){
 
 		it("Pins knocked down with throw equates to points gained", function(){
 			frame.rackScore(10);
-			expect(frame.score).toEqual(10);
+			expect(frame.score).toEqual([10, 0]);
 		});
 
 		it("Keeps a running score over the frame", function(){
 			frame.rackScore(8);
 			frame.rackScore(2);
-			expect(frame.score).toEqual(10);
+			expect(frame.score).toEqual([8,2]);
 		});
 
 	});
@@ -29,17 +29,10 @@ describe ("Frame", function(){
 			expect(frame.throwCount).toEqual(1);
 		});
 
-		// it("Resets after two throws", function(){
-		// 	frame.rackScore(8);
-		// 	frame.rackScore(2);
-		// 	expect(frame.throwCount).toEqual(2);
-		// 	expect(frame.score).toEqual(0);
-		// });
-
 		it("If 10 pins are knocked down on first throw, end of frame", function(){
 			frame.rackScore(10);
 			expect(frame.throwCount).toEqual(0);
-			expect(frame.score).toEqual(10);
+			expect(frame.score).toEqual([10, 0]);
 		});
 
 	}); 
@@ -67,7 +60,7 @@ describe ("Frame", function(){
 			frame.rackScore(6);
 			frame.rackScore(4);
 			expect(frame.spare).toBe(true);
-			expect(frame.strike).toBe(false);
+			// expect(frame.strike).toBe(false);
 		});
 
 	});

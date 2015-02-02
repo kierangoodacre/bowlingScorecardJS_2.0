@@ -1,26 +1,28 @@
 var Frame = function (){
-	this.score = 0;
+	this.score = [];
 	this.throwCount = 2;
 	this.strike = false;
 	this.spare = false;
 };
 
 Frame.prototype.rackScore = function (pinsKnockedDown){
-	this.score += pinsKnockedDown;
+	this.score.push(pinsKnockedDown);
 	this.throwCount -= 1;
+	var total = this.score.reduce(function(a, b) { return a + b; }, 0)
 
-	if(pinsKnockedDown === 10 && this.throwCount === 1){
+	if(this.score[0] === 10 && this.throwCount === 1){
 		this.isStrike();
+		this.score.push(0);
 		this.throwCount -= 1;
 	}
-	else if (this.score === 10){
+	else if (total === 10){
 		this.isSpare();
 	}
 };
 
 Frame.prototype.resetThrowCount = function (){
 	this.throwCount = 2;
-	this.score = 0;
+	this.score = [];
 };
 
 Frame.prototype.isStrike = function (){
@@ -30,4 +32,5 @@ Frame.prototype.isStrike = function (){
 Frame.prototype.isSpare = function (){
 	this.spare = true;
 };
+
 

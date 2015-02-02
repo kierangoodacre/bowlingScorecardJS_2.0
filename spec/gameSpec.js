@@ -23,16 +23,35 @@ describe ("Game", function(){
 				expect(game.pointsTally).toEqual([]);
 				frame.rackScore(2);
 				game.receiveScore(frame);
-				expect(game.pointsTally).toEqual([4]);
+				expect(game.pointsTally).toEqual([2, 2]);
 			});
 
 			it("Points should be added over the number of frames", function(){
 				frame.rackScore(4);
 				frame.rackScore(4);
 				game.receiveScore(frame);
-				expect(game.pointsTally).toEqual([8]);
+				frame.resetThrowCount();
+				frame.rackScore(4);
+				frame.rackScore(4);
+				game.receiveScore(frame);
+				expect(game.pointsTally).toEqual([4, 4, 4, 4]);
 			});
 
 		});
+
+		// describe("Strike", function(){
+
+		// 	it("if initialized the next frame is added to that frame", function(){
+		// 		frame.rackScore(10);
+		// 		game.receiveScore(frame);
+		// 		frame.resetThrowCount();
+		// 		game.rackScore(4);
+		// 		game.rackScore(4);
+		// 		game.receiveScore(frame);
+		// 		frame.resetThrowCount();
+		// 		expect(game.pointsTally).toEqual([10, 0, 4, 4]);
+		// 	});
+
+		// });
 
 });

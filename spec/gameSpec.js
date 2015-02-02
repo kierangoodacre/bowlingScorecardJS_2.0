@@ -50,6 +50,35 @@ describe ("Game", function(){
 
 		});
 
+		describe("Strike game", function(){
+
+			it("If initialized the next 2 throws are added to that frame", function(){
+				frame.rackScore(10);
+				game.receiveScore(frame);
+				frame.resetThrowCount();
+				frame.rackScore(4);
+				frame.rackScore(4);
+				game.receiveScore(frame);
+				expect(game.pointsTally).toEqual([18, 0, 4, 4])
+			});
+
+		});
+
+		describe("Spare game", function(){
+
+			it("If initialized the next throw is added to the previous frame", function(){
+				frame.rackScore(5);
+				frame.rackScore(5);
+				game.receiveScore(frame);
+				frame.resetThrowCount();
+				frame.rackScore(3);
+				frame.rackScore(5);
+				game.receiveScore(frame);
+				expect(game.pointsTally).toEqual([5, 8, 3, 5])
+			});
+
+		});
+
 		// describe("Strike", function(){
 
 		// 	it("if initialized the next frame is added to that frame", function(){

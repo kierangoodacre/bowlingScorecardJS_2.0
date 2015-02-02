@@ -1,4 +1,4 @@
-    describe ("Frame", function(){
+describe ("Frame", function(){
 
 	var frame;
 
@@ -33,11 +33,14 @@
 			frame.rackScore(10);
 			expect(frame.throwCount).toEqual(0);
 			expect(frame.score).toEqual([10, 0]);
+			//expect(frame.score).toContain(10)
 		});
 
 	}); 
 
 	describe("Strike", function(){
+		//move away from using should
+		//precision when speaking about what is being described - here it looks like you're trying to initialize a new strike object
 
 		it("It should not be initialized as a strike", function(){
 			expect(frame.strike).toBe(false);

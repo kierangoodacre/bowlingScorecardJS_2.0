@@ -25,6 +25,7 @@ Frame.prototype.resetThrowCount = function (){
 	this.score = [];
 };
 
+// think about not setting booleans - if you were to use them, maybe group them: this.bonus = 'strike', or this.bonus = 'spare'
 Frame.prototype.isStrike = function (){
 	this.strike = true;
 };

@@ -8,11 +8,11 @@ var Game = function(){
 };
 
 Game.prototype.receiveScore = function(frame) {
-	if (this.pointsTally[this.pointsTally.length-2] === 10){
+	if (this._isStrike()){
 		this._removeFrameFromGame();
 		this._addStrikeBonusPoints(frame);
 		this._addToPointsTally(frame);
-	} else if (this.sparePoints() === 10){
+	} else if (this._isSpare()){
 		this._removeFrameFromGame();
 		this._addToPointsTally(frame); 
 		this._spareBonusPoint();
@@ -24,9 +24,20 @@ Game.prototype.receiveScore = function(frame) {
 	}
 };
 
+Game.prototype._isSpare = function(){
+	return this.sparePoints() === 10
+};
+
+Game.prototype._isStrike = function(){
+	return this.pointsTally[this.pointsTally.length-2] === 10
+};
+
+Game.prototype.totalScore = function(){
+	return this.pointsTally.reduce(this._addPoints, 0)
+};
+
 Game.prototype.sparePoints = function(){
-	return this.pointsTally.slice(-2).reduce(this._addPoints, 0)
-	
+	return this.pointsTally.slice(-2).reduce(this._addPoints, 0)	
 };
 
 //private
@@ -53,4 +64,3 @@ Game.prototype._removeFrameFromGame = function(){
 Game.prototype._addToPointsTally = function(frame){
 	this.pointsTally = this.pointsTally.concat(frame.score)
 };
-

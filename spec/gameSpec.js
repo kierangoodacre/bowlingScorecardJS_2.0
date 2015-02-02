@@ -8,6 +8,15 @@ describe ("Game", function(){
 		frame = new Frame();
 	});
 
+function playHelper(frame, game){
+	for (i = 0; i < 9; i++){
+		frame.rackScore(4);
+		frame.rackScore(4);
+		game.receiveScore(frame);
+		frame.resetThrowCount();
+	};
+}
+
 		describe("Frame score", function(){
 
 			it("Has no pointsTally when game is started", function(){
@@ -35,13 +44,22 @@ describe ("Game", function(){
 
 		});
 
+		describe("Total Score", function(){
+
+			it("Will be kept over the game", function(){
+				playHelper(frame, game);
+				expect(game.totalScore()).toEqual(72);
+			});
+
+		});
+
 		describe("Frame objects", function(){
 
-			it("should be made of 10", function(){
+			it("Game will be made of 10", function(){
 				expect(game.frames.length).toEqual(10)
 			});
 
-			it("should be removed as score is added", function(){
+			it("Will be removed from game as frame is finished", function(){
 				frame.rackScore(4);
 				frame.rackScore(4);
 				game.receiveScore(frame);
@@ -79,17 +97,16 @@ describe ("Game", function(){
 
 		});
 
-		// describe("Strike", function(){
+		// describe("10th Frame", function(){
 
-		// 	it("if initialized the next frame is added to that frame", function(){
+		// 	it("If strike the next two rolls are added as normal", function(){
+		// 		playHelper(frame, game);
 		// 		frame.rackScore(10);
 		// 		game.receiveScore(frame);
 		// 		frame.resetThrowCount();
-		// 		game.rackScore(4);
-		// 		game.rackScore(4);
-		// 		game.receiveScore(frame);
-		// 		frame.resetThrowCount();
-		// 		expect(game.pointsTally).toEqual([10, 0, 4, 4]);
+		// 		frame.rackScore(4);
+		// 		frame.rackScore(4);
+		// 		expect()
 		// 	});
 
 		// });

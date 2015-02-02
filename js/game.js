@@ -1,16 +1,20 @@
 var Game = function(){
-	this.frames = 10;
-	// for(var i = 0; i < 9; i++)
-	// 	this.frames.push(new Frame)
-	this.pointsTally = []
+	this.frames = [];
+
+	for (i = 0; i < 10; i++){
+		this.frames.push(new Frame)};
+
+	this.pointsTally = [];
 };
 
 Game.prototype.receiveScore = function(frame) {
 	if (frame.throwCount === 0 && frame.strike === true){
+		this.frames.pop();
 		this.pointsTally = this.pointsTally.concat(frame.score)
 		// return this.strikePoints()
 	}
 	else if(frame.throwCount === 0){
+		this.frames.pop();
 		this.pointsTally = this.pointsTally.concat(frame.score)
 	}
 	else {

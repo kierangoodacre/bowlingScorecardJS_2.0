@@ -14,10 +14,6 @@ describe ("Game", function(){
 				expect(game.pointsTally).toEqual([]);
 			});
 
-			it("Should be made up of ten frames", function(){
-				expect(game.frames).toEqual(10);
-			});
-
 			it("Should only be added when there are no throws left", function(){
 				frame.rackScore(2);
 				expect(game.pointsTally).toEqual([]);
@@ -35,6 +31,21 @@ describe ("Game", function(){
 				frame.rackScore(4);
 				game.receiveScore(frame);
 				expect(game.pointsTally).toEqual([4, 4, 4, 4]);
+			});
+
+		});
+
+		describe("Frame objects", function(){
+
+			it("should be made of 10", function(){
+				expect(game.frames.length).toEqual(10)
+			});
+
+			it("should be removed as score is added", function(){
+				frame.rackScore(4);
+				frame.rackScore(4);
+				game.receiveScore(frame);
+				expect(game.frames.length).toEqual(9)
 			});
 
 		});

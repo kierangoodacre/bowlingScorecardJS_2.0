@@ -50,9 +50,9 @@ describe ("Game", function(){
 
 		});
 
-		describe("Strike game", function(){
+		describe("Strike frame", function(){
 
-			it("If initialized the next 2 throws are added to that frame", function(){
+			it("If role of 10 next frame added to that frame", function(){
 				frame.rackScore(10);
 				game.receiveScore(frame);
 				frame.resetThrowCount();
@@ -64,9 +64,9 @@ describe ("Game", function(){
 
 		});
 
-		describe("Spare game", function(){
+		describe("Spare frame", function(){
 
-			it("If initialized the next throw is added to the previous frame", function(){
+			it("If frame total is 10 next throw added as bonuse to that frame", function(){
 				frame.rackScore(5);
 				frame.rackScore(5);
 				game.receiveScore(frame);

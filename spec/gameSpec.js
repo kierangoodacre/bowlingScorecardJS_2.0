@@ -8,14 +8,14 @@ describe ("Game", function(){
 		frame = new Frame();
 	});
 
-function playHelper(frame, game){
-	for (i = 0; i < 9; i++){
-		frame.rackScore(4);
-		frame.rackScore(4);
-		game.receiveScore(frame);
-		frame.resetThrowCount();
-	};
-}
+	function playHelper(frame, game){
+		for (i = 0; i < 9; i++){
+			frame.rackScore(4);
+			frame.rackScore(4);
+			game.receiveScore(frame);
+			frame.resetThrowCount();
+		};
+	}
 
 		describe("Frame score", function(){
 
@@ -97,18 +97,5 @@ function playHelper(frame, game){
 
 		});
 
-		// describe("10th Frame", function(){
-
-		// 	it("If strike the next two rolls are added as normal", function(){
-		// 		playHelper(frame, game);
-		// 		frame.rackScore(10);
-		// 		game.receiveScore(frame);
-		// 		frame.resetThrowCount();
-		// 		frame.rackScore(4);
-		// 		frame.rackScore(4);
-		// 		expect()
-		// 	});
-
-		// });
 
 });
